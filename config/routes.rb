@@ -4,5 +4,5 @@ Rottenpotatoes::Application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :movies
-  #root to: redirect_to('/movies')
+  root to: redirect('/movies')
 end
