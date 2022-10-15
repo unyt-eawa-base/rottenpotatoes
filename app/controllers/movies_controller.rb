@@ -1,11 +1,21 @@
 class MoviesController < ApplicationController
   def index
     @movies = Movie.all
+    respond_to do |format|
+      format.html {render 'index'}
+      format.xml {render :xml => @movies}
+      format.json {render :json => @movies}
+    end
   end
 
   def show
     id = params[:id]
     @movie = Movie.find id
+    respond_to do |format|
+      format.html {render 'show'}
+      format.xml {render :xml => @movie}
+      format.json {render :json => @movie}
+    end
   end
 
   def new
