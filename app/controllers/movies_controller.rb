@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
       flash[:notice] = "Movie #{@movie.title} was successfully created!"
       redirect_to movies_path
     else
-      render 'new'
+      render :new, status: 422
     end
   end
 
@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
       flash[:notice] = "Movie #{@movie.title} successfully updated!"
       redirect_to movie_path(@movie)
     else
-      render 'edit'
+      render :edit, status:  422
     end
   end
 

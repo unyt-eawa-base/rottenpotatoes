@@ -1,6 +1,6 @@
 class Movie < ApplicationRecord
   @@grandfathered_date = Date.parse('1 Nov 1968')
-  def self.all_ratings ; %w[G PG PG -13 R NC -17]; end
+  def self.all_ratings ; %w[G PG PG-13 R NC-17]; end
 
   validates :title, presence: true
   validates :release_date, presence: true
