@@ -11,11 +11,15 @@ class MoviesController < ApplicationController
   def show
     id = params[:id]
     @movie = Movie.find id
+=begin
     respond_to do |format|
       format.html {render 'show'}
       format.xml {render :xml => @movie}
       format.json {render :json => @movie}
     end
+=end
+    render(:partial => 'movie', :object => @movie) if request.xhr?
+
   end
 
   def new
