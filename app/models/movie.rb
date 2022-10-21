@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   has_many :reviews
+  has_many :moviegoers, through: :reviews
   @@grandfathered_date = Date.parse('1 Nov 1968')
   def self.all_ratings ; %w[G PG PG-13 R NC-17]; end
 

@@ -16,11 +16,20 @@
     = @movie.reviews_count
 
 %h3 Description:
-
 %p#description= @movie.description
+
+- if (@review)
+  %h3 You said:
+  %p#description
+    #{@review.comments}
+    ="(#{@review.potatoes} potatoes)"
+
 
 = link_to 'Edit Info', edit_movie_path(@movie)
 |
 = link_to 'Delete', movie_path(@movie), data: {'turbo-method': :delete, 'turbo-confirm': 'Are Your Sure?'}
 |
+- unless @review
+  = link_to 'Add reviews', new_movie_review_path(@movie)
+  |
 = link_to 'Back to movie list', movies_path
