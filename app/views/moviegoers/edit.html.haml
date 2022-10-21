@@ -1,0 +1,26 @@
+%h2 Edit Profile
+
+- unless @current_moviegoer.errors.empty?
+  #warning
+    Errors prevented this profile from being #{controller.action_name}d:
+    %ul
+      - @current_moviegoer.errors.full_messages.each do |error|
+        %li= error
+
+= form_tag profile_path, :method => :put do
+  %table
+    %tr
+      %td= label :current_moviegoer, :name, 'Name'
+      %td= text_field :current_moviegoer, 'name'
+
+    %tr
+      %td= label :current_moviegoer, :surname, 'Surname'
+      %td= text_field :current_moviegoer, 'surname'
+
+    %tr
+      %td= label :current_moviegoer, :email, 'Email'
+      %td= email_field :current_moviegoer, 'email'
+
+    %tr
+      %td= link_to 'Change Password', '/profile/password/change'
+      %td= submit_tag 'Update Profile'

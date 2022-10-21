@@ -1,0 +1,20 @@
+-# in app/views/movies/show.html.haml
+%h2 #{@current_moviegoer.full_name} Profile
+
+%ul#details
+  %li
+    Name:
+    = @current_moviegoer.name
+  %li
+    Surname:
+    = @current_moviegoer.surname
+  %li
+    Email:
+    = @current_moviegoer.email
+  %li
+    Reviews:
+    = @current_moviegoer.reviews_count
+
+= link_to 'Edit Profile', edit_profile_path
+|
+= link_to 'Back to movie list', movies_path

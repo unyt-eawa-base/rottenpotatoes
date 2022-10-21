@@ -9,4 +9,8 @@ class Moviegoer < ApplicationRecord
     password = params[:password]
     Moviegoer.find_by_email_and_password email, password
   end
+
+  def reviews_count
+    self.reviews.count
+  end
 end

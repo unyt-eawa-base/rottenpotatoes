@@ -1,4 +1,9 @@
-%p= movie.description
+%p
+  = movie.description || 'No description entered yet'
+  - if @movie.reviews_count > 0
+    %br
+    = "Rating: #{@movie.average_rating.round(1)} from #{@movie.reviews_count}"
+
 
 = link_to 'Edit Movie', edit_movie_path(movie)
 = link_to 'Close', '', {:id => 'closeLink'}
