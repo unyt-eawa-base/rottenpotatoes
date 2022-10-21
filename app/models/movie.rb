@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  has_many :reviews
   @@grandfathered_date = Date.parse('1 Nov 1968')
   def self.all_ratings ; %w[G PG PG-13 R NC-17]; end
 
@@ -14,4 +15,11 @@ class Movie < ApplicationRecord
     release_date && release_date < @@grandfathered_date
   end
 
+  def average_rating
+    self.reviews.average :potatoes
+  end
+
+  def reviews_count
+    self.reviews.count
+  end
 end

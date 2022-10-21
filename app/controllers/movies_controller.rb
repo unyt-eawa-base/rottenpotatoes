@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :enforce_login, except: [:index, :show]
+  before_action :set_current_user
   def index
     @movies = Movie.all
     respond_to do |format|

@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    mg = params[:moviegoer]
-    @moviegoer = Moviegoer.find_by_email_and_password mg[:email], mg[:password]
-    if (@moviegoer)
-      flash[:notice] = "#{@moviegoer.full_name} successfully logged in!"
+    mg = Moviegoer.authenticate params[:moviegoer]
+    if (mg)
+      flash[:notice] = "#{mg.full_name} successfully logged in!"
+      session[:current_mg_id] = mg.id
       redirect_to movies_path
     else
       flash[:warning] = 'Could not login, please try again'
@@ -16,7 +16,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    #logout logic
+    session.delete :current_mg_id
+    flash[:notice] = 'User logged out!'
+    redirect_to movies_path
   end
 
 end
