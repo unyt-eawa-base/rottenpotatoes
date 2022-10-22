@@ -83,3 +83,9 @@ form label {
     border: 2px double grey;
     background: wheat;
 }
+div#login {
+    background: cadetblue;
+    color: darkblue;
+    margin: 1em 10em;
+    padding: 4px;
+}

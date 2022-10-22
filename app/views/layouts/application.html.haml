@@ -16,11 +16,12 @@
     - elsif flash[:warning]
       #warning.message= flash[:warning]
 
-    - if @current_moviegoer
-      %p.welcome Welcome, #{link_to @current_moviegoer.full_name, profile_path}! #{link_to 'Log Out', logout_path, :"data-turbo-method" => :post}
-    - else
-      - unless current_page? login_path
-        %p.login Not logged in yet! #{link_to 'Login here', login_path}
+    #login
+      - if @current_moviegoer
+        %p.welcome Welcome, #{link_to @current_moviegoer.full_name, profile_path}! #{link_to 'Log Out', logout_path, :"data-turbo-method" => :post}
+      - else
+        - unless current_page? login_path
+          %p.login Not logged in yet! #{link_to 'Login here', login_path}
 
     #main
       = yield
