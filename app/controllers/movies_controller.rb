@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
   def show
     id = params[:id]
     @movie = Movie.find id
-    @review = @movie.reviews.where(moviegoer_id: @current_moviegoer.id).first
+    @review = @movie.reviews.where(moviegoer_id: @current_moviegoer.id).first if logged_in?
 =begin
     respond_to do |format|
       format.html {render 'show'}
